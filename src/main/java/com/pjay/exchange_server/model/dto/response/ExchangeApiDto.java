@@ -1,5 +1,7 @@
-package com.pjay.exchange_server.model;
+package com.pjay.exchange_server.model.dto.response;
 
+import com.pjay.exchange_server.model.entity.ExchangeApiDataEntity;
+import com.pjay.exchange_server.model.entity.ExchangeDateEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExchangeDto {
+public class ExchangeApiDto {
     /**
      * "result":1, 1: 조회 성공, 2: DATA 코드 오류 3: 인증코드 오, 4: 일일 제한횟수 마감
      * "cur_unit":"USD", 통화코드

@@ -1,5 +1,6 @@
-package com.pjay.exchange_server.model;
+package com.pjay.exchange_server.model.entity;
 
+import com.pjay.exchange_server.model.dto.response.ExchangeListDto;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -41,5 +42,14 @@ public class ExchangeApiDataEntity {
 
     @CreationTimestamp
     private LocalDateTime createdDate;
+
+    public ExchangeListDto toDto(){
+        return ExchangeListDto.builder()
+                .idx(idx)
+                .amount(amount)
+                .unit(unit)
+                .curName(curName)
+                .build();
+    }
 
 }

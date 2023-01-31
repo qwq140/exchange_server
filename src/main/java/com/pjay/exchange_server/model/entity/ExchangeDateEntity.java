@@ -1,15 +1,16 @@
-package com.pjay.exchange_server.model;
+package com.pjay.exchange_server.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.pjay.exchange_server.model.dto.response.ExchangeDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
@@ -27,4 +28,12 @@ public class ExchangeDateEntity {
     @OneToMany(fetch = FetchType.EAGER,  mappedBy = "master")
     private List<ExchangeApiDataEntity> dataList;
 
+
+    public ExchangeDto toDto(){
+        return ExchangeDto.builder()
+                .idx(idx)
+                .date(date)
+                .list(dataList.stream().map(ExchangeApiDataEntity::toDto).collect(Collectors.toList()))
+                .build();
+    }
 }
